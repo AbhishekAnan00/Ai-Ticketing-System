@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
-import TicketList from "../../components/TicketList";
+// frontend/src/app/ticket/page.js
+"use client";
+import TicketForm from "../components/TicketForm";
+import TicketList from "../components/TicketList";
 
-export default function TicketsPage() {
-  const [tickets, setTickets] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/tickets")
-      .then((res) => res.json())
-      .then((data) => setTickets(data.tickets));
-  }, []);
-
+export default function TicketDashboard() {
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Your Tickets</h1>
-      <TicketList tickets={tickets} />
+    <div style={{ padding: "2rem" }}>
+      <h1>Ticket Dashboard</h1>
+      <TicketForm />
+      <TicketList />
     </div>
   );
 }
