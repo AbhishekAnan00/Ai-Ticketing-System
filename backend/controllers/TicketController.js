@@ -1,4 +1,3 @@
-// backend/controllers/ticketController.js
 import Users from "../models/Users.js";
 
 export const createTicket = async (req, res) => {

@@ -1,4 +1,3 @@
-// backend/routes/ticketRoutes.js
 import express from "express";
 import { createTicket, getTickets } from "../controllers/ticketController.js";
 
