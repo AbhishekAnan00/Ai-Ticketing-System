@@ -1,12 +1,20 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { createTicket } from "../controllers/ticketController";
+import dotenv from "dotenv";
 
-const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+dotenv.config();
 
-const prompt = `give me a detailed of ticket user:${createTicket}\n\nTICKET`;
-const ticket = [];
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+const getTicketReview = async (ticket) => { 
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const prompt = `Please provide a detailed ticket review for the following ticket:\n${ticket}:`;
+    const result = await model.generateContent(prompt);
+    return result.response.text().trim();
+  } catch (error) {
+    console.error("Error in getticketReview:", error);
+    throw error;
+  }
+};
 
-const result = await model.generateContent(prompt);
-console.log(result.response.text());
+export { getTicketReview };

@@ -1,5 +1,6 @@
-import Users from "../models/Users.js";
+import Ticket from "../models/Ticket.js";
 
+// Create a new ticket
 export const createTicket = async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -11,11 +12,13 @@ export const createTicket = async (req, res) => {
   }
 };
 
+// Retrieve all tickets, sorted by newest first
 export const getTickets = async (req, res) => {
   try {
-    const tickets = await Users.find().sort({ createdAt: -1 });
+    const tickets = await Ticket.find().sort({ createdAt: -1 });
     res.json(tickets);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+  

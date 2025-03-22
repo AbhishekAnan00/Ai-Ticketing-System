@@ -3,17 +3,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+const socket = io(backendURL);
 
 export default function TicketList() {
   const [tickets, setTickets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchTickets = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/tickets");
+      const { data } = await axios.get(`${backendURL}/api/tickets`);
       setTickets(data);
-    } catch (error) {
-      console.error("Error fetching tickets:", error);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching tickets:", err);
+      setError("Failed to load tickets.");
+      setLoading(false);
     }
   };
 
@@ -24,6 +30,9 @@ export default function TicketList() {
     });
     return () => socket.off("ticketCreated");
   }, []);
+
+  if (loading) return <div>Loading tickets...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div>

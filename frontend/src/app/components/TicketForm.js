@@ -3,7 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+const socket = io(backendURL);
 
 export default function TicketForm() {
   const [title, setTitle] = useState("");
@@ -12,7 +13,7 @@ export default function TicketForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:5000/api/tickets", {
+      const { data } = await axios.post(`${backendURL}/api/tickets`, {
         title,
         description,
       });
