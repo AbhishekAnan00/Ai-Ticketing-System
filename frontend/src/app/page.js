@@ -8,7 +8,9 @@ export default function Home() {
       <p>
         Get support, create tickets, and interact with our intelligent assistant.
       </p>
-      <Link href="/ticket" style={{ color: "#4a90e2", textDecoration: "underline" }}>
+      <Link 
+        href="/ticket" 
+        style={{ color: "#4a90e2", textDecoration: "underline" }}>
         Go to Ticket Dashboard
       </Link>
     </div>

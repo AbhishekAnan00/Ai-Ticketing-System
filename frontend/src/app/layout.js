@@ -1,4 +1,6 @@
 import "../globals.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 export const metadata = {
   title: "AI Ticketing System",
@@ -8,8 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, fontFamily: "Arial, sans-serif" }}>
+      <body>
+        {/* Navbar */}
+        <Navbar />
         {children}
+        <Footer/>
       </body>
     </html>
   );

@@ -1,0 +1,32 @@
+// app/controllers/attachmentController.js
+import Ticket from "../models/ticketModel.js";
+
+export const uploadAttachment = async (req, res) => {
+  try {
+    const ticketId = req.params.id;
+    const file = req.file;
+    if (!file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    // For this example, we're storing the file locally.
+    // In production, you might upload the file to a cloud storage service.
+    const attachmentUrl = `/uploads/${file.filename}`;
+
+    // Find the ticket and update its attachments array
+    const ticket = await Ticket.findById(ticketId);
+    if (!ticket) {
+      return res.status(404).json({ message: "Ticket not found" });
+    }
+    if (!ticket.attachments) {
+      ticket.attachments = [];
+    }
+    ticket.attachments.push(attachmentUrl);
+    await ticket.save();
+
+    res.status(200).json({ message: "File uploaded successfully", attachmentUrl });
+  } catch (error) {
+    console.error("Error uploading attachment:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
