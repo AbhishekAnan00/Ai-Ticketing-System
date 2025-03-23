@@ -49,3 +49,17 @@ export const getTickets = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteTicket = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const ticket = await Ticket.findByIdAndDelete(id);
+    if (!ticket) {
+      return res.status(404).json({ error: "Ticket not found" });
+    }
+    res.status(200).json({ message: "Ticket deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting ticket:", error);
+    res.status(500).json({ error: "Error deleting ticket" });
+  }
+};

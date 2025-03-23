@@ -1,21 +1,6 @@
-// import express from "express";
-// import { createTicket, getTicketById, getTickets } from "../controllers/TicketController.js";
-
-// const router = express.Router();
-
-// router.route("/")
-//   .get(getTickets)
-//   .post(createTicket);
-  
-// router.route("/:id").get(getTicketById);
-
-// export default router;
-// app/routes/ticketRoutes.js
-
-
 import express from "express";
 import multer from "multer";
-import { createTicket, getTickets, getTicketById } from "../controllers/ticketController.js";
+import { createTicket, getTickets, getTicketById, deleteTicket } from "../controllers/ticketController.js";
 import { uploadAttachment } from "../controllers/attachmentController.js";
 
 const router = express.Router();
@@ -32,15 +17,18 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Ticket endpoints
+
 router.route("/")
   .get(getTickets)
   .post(createTicket);
 
-// Endpoint to get a ticket by id
-router.route("/:id").get(getTicketById);
 
-// Endpoint for file attachment upload
+router.route("/:id")
+  .get(getTicketById)
+  .delete(deleteTicket);
+
+
 router.post("/:id/attachments", upload.single("attachment"), uploadAttachment);
+
 
 export default router;
