@@ -104,23 +104,32 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           </svg>
           {!collapsed && <span>Analytics</span>}
         </Link>
-        <Link
-          href="/profile"
+        <Link href="/profile"
           onClick={handleLinkClick}
-          className="flex items-center p-2 rounded hover:bg-[#222752]"
-        >
+          className="flex items-center p-2 rounded hover:bg-[#222752]">
           <svg
-            className="h-5 w-5 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 mr-2"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
             viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <path d="M12 4.354c-2.974 0-5.403 2.316-5.403 5.17 0 3.63 5.403 9.127 5.403 9.127s5.403-5.497 5.403-9.127c0-2.854-2.43-5.17-5.403-5.17z" />
-            <circle cx="12" cy="9.524" r="1.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5.121 17.804A9 9 0 1118.878 6.196 9 9 0 015.121 17.804z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+            />
           </svg>
           {!collapsed && <span>Profile</span>}
-        </Link>
+      
+      </Link>
       </nav>
       {/* Desktop collapse/expand toggle button */}
       <div className="hidden lg:flex absolute bottom-4 right-4">

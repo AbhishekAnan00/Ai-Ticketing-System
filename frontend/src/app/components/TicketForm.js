@@ -6,6 +6,7 @@ import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import GeminiFileUpload from "./GeminiFileUpload";
 
 Chart.register(...registerables);
 
@@ -141,6 +142,10 @@ function TicketForm() {
         </label>
         <FileUpload onFileSelect={handleFileSelect} />
       </div>
+      {/* <GeminiFileUpload
+        onUploadSuccess={(data) => console.log("Upload success:", data)}
+        onUploadError={(err) => console.error("Upload error:", err)}
+      /> */}
       <button
         type="submit"
         className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
