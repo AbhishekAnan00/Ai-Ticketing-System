@@ -17,15 +17,15 @@ app.use(cors());
 app.use(express.json());
 
 // Ensure uploads directory exists
-const uploadsDir = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir);
-  console.log("Created uploads directory at:", uploadsDir);
-} else {
-  console.log("Uploads directory already exists at:", uploadsDir);
-}
+// const uploadsDir = path.join(process.cwd(), "uploads");
+// if (!fs.existsSync(uploadsDir)) {
+//   fs.mkdirSync(uploadsDir);
+//   console.log("Created uploads directory at:", uploadsDir);
+// } else {
+//   console.log("Uploads directory already exists at:", uploadsDir);
+// }
 
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+//app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 connectDB();
 

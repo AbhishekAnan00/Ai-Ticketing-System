@@ -9,7 +9,7 @@ export const createUser = async (req, res) => {
     await connectDB();
     const { email, password, name } = req.body;
     if (!email || !password || !name) {
-      return res.status(400).json({ message: "Missing required fields" });
+      return res.status(400).json({ message: "required fields", });
     }
     const existingUser = await User.findOne({ email });
     if (existingUser) {
