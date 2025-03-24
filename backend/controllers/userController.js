@@ -36,7 +36,6 @@ export const getUsers = async (req, res) => {
 };
 
 try {
-  // Connect to DB (if not already connected)
   await connectDB();
 
   const { email, password } = req.body;
@@ -47,27 +46,23 @@ try {
     return res.status(400).json({ message: "Missing required fields" });
   }
 
-  // Find the user by email
   const user = await User.findOne({ email });
   if (!user) {
     console.error("User not found with email:", email);
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  // Compare passwords
   const isValid = await bcrypt.compare(password, user.password);
   if (!isValid) {
     console.error("Invalid password for user:", email);
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  // Ensure JWT_SECRET is defined
   if (!process.env.JWT_SECRET) {
     console.error("JWT_SECRET not defined in environment variables");
     return res.status(500).json({ message: "Server configuration error" });
   }
 
-  // Sign JWT token
   const token = jwt.sign(
     { userId: user._id, email: user.email },
     process.env.JWT_SECRET,

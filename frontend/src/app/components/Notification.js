@@ -1,4 +1,3 @@
-// src/components/Notification.js
 "use client";
 import React from "react";
 

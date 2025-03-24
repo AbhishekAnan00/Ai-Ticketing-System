@@ -24,8 +24,7 @@ export default function GeminiFileUpload({ onUploadSuccess, onUploadError }) {
     formData.append("file", selectedFile);
 
     try {
-      // Replace with your actual Gemini API endpoint URL
-      const response = await axios.post("https://your-gemini-api/upload", formData, {
+      const response = await axios.post(process.env.GEMINI_API, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

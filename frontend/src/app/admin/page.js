@@ -13,7 +13,6 @@ import Link from "next/link";
 Chart.register(...registerables);
 
 export default function AdminDashboard() {
-  // State for tickets, stats, etc.
   const [tickets, setTickets] = useState([]);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [stats, setStats] = useState({
@@ -30,13 +29,11 @@ export default function AdminDashboard() {
 
   const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
-  // On mount, check for token and decode to set user name
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        // Use the user's name if available; otherwise fallback to email
         setUserName(decoded.name || decoded.email || "User");
       } catch (err) {
         console.error("Error decoding token:", err);
@@ -243,7 +240,6 @@ export default function AdminDashboard() {
         </header>
 
         <div className="p-6 overflow-y-auto">
-          {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div className="bg-[#1F2244] p-4 rounded-lg shadow">
               <p className="text-gray-400 text-sm mb-2">Total Tickets</p>
@@ -263,7 +259,6 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          {/* Charts */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
             <div className="bg-[#1F2244] p-4 rounded-lg shadow xl:col-span-1">
               <h3 className="text-lg font-semibold mb-4">Ticket Status Distribution</h3>
@@ -299,7 +294,6 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          {/* Ticket List */}
           <div className="bg-[#1F2244] p-4 rounded-lg shadow">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <h3 className="text-lg font-semibold mb-2 md:mb-0">All Tickets</h3>

@@ -13,10 +13,9 @@ export default function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/auth/login", { email, password });
-      // Save token to localStorage (or use cookies)
       localStorage.setItem("token", data.token);
       toast.success("Logged in successfully!");
-      router.push("/profile"); // Redirect to the profile page
+      router.push("/profile");
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed");
     }

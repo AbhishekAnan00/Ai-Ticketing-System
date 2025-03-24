@@ -3,11 +3,11 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function Sidebar({ isOpen, setIsOpen }) {
-  // For desktop, allow collapsing/expanding sidebar.
+ 
   const [collapsed, setCollapsed] = useState(false);
 
   const handleLinkClick = () => {
-    // On mobile, close the sidebar when a link is clicked.
+    
     setIsOpen(false);
   };
 
@@ -21,7 +21,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         ${isOpen ? "translate-x-0" : "-translate-x-full"} 
         ${collapsed ? "w-20" : "w-64"} lg:translate-x-0`}
     >
-      {/* Mobile close toggle inside sidebar */}
+     
       <div className="lg:hidden flex justify-end">
         <button
           onClick={() => setIsOpen(false)}
@@ -39,7 +39,6 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           </svg>
         </button>
       </div>
-      {/* Header */}
       <div className="flex items-center mb-10">
         <div className="h-10 w-10 bg-blue-500 rounded-full mr-3" />
         {!collapsed && (
@@ -48,7 +47,6 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           </h1>
         )}
       </div>
-      {/* Navigation Links */}
       <nav className="flex flex-col gap-3 text-gray-300 text-sm">
         <Link
           href="/"
@@ -131,14 +129,13 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       
       </Link>
       </nav>
-      {/* Desktop collapse/expand toggle button */}
       <div className="hidden lg:flex absolute bottom-4 right-4">
         <button
           onClick={toggleCollapse}
           className="p-2 rounded-md hover:bg-blue-700 transition-colors"
         >
           {collapsed ? (
-            // Expand: right arrow icon
+            
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -149,7 +146,6 @@ export default function Sidebar({ isOpen, setIsOpen }) {
               <polyline points="9 18 15 12 9 6" />
             </svg>
           ) : (
-            // Collapse: left arrow icon
             <svg
               viewBox="0 0 24 24"
               fill="none"

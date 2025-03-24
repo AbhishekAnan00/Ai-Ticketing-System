@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
-import { createTicket, getTickets, getTicketById, deleteTicket } from "../controllers/ticketController.js";
 import { uploadAttachment } from "../controllers/attachmentController.js";
+import { createTicket, deleteTicket, getTicketById, getTickets } from "../controllers/TicketController.js";
 
 const router = express.Router();
 

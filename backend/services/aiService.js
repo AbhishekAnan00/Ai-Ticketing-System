@@ -12,10 +12,8 @@ export const generateTicketDetails = async (ticketContent) => {
     const prompt = `Provide a detailed explanation for the following ticket: "${ticketContent}"\n\nTICKET:`;
     const result = await model.generateContent(prompt);
 
-    // Log the full result to verify its structure
-    console.log("Gemini API full response:", result);
+    // console.log("Gemini API full response:", result);
 
-    // Check if result.response exists and then extract text
     if (result && result.response && typeof result.response.text === "function") {
       const enrichedText = result.response.text();
       console.log("Extracted enriched description:", enrichedText);
