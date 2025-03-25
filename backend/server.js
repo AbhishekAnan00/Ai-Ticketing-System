@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import http from "http";
 import fs from "fs";
 import { Server } from "socket.io";
@@ -8,7 +7,8 @@ import { connectDB } from "./config/db.js";
 import ticketRoute from "./routes/ticketRoute.js"
 import userRoute from "./routes/userRoute.js";;
 import { socketHandler } from "./sockets/SocketHandler.js"; 
-import authRoutes from "./auth/login.js"
+import authRoutes from "./auth/login.js";
+import dotenv from "dotenv";
 
 const app = express();
 

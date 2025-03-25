@@ -1,6 +1,6 @@
 
 import User from "../models/userModel.js"
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { connectDB } from "../config/db.js";
 
 export default async function handler(req, res) {
