@@ -9,30 +9,28 @@ import userRoute from "./routes/userRoute.js";;
 import { socketHandler } from "./sockets/SocketHandler.js"; 
 import authRoutes from "./auth/login.js";
 import dotenv from "dotenv";
-
+//import uploadRoute from "./routes/uploadRoute.js"
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Ensure uploads directory exists
-const uploadsDir = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir);
-  console.log("Created uploads directory at:", uploadsDir);
-} else {
-  console.log("Uploads directory already exists at:", uploadsDir);
-}
+// const uploadsDir = path.join(process.cwd(), "uploads");
+// if (!fs.existsSync(uploadsDir)) {
+//   fs.mkdirSync(uploadsDir);
+//   console.log("Created uploads directory at:", uploadsDir);
+// } else {
+//   console.log("Uploads directory already exists at:", uploadsDir);
+// }
 
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+// app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 connectDB();
-
-
 
 app.use("/", authRoutes);
 app.use("/api/tickets", ticketRoute);
 app.use("/api/users", userRoute);
+//app.use("/api", uploadRoute);
 
 const server = http.createServer(app);
 const io = new Server(server, {
