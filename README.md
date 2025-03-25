@@ -3,7 +3,9 @@
 # AI Ticketing System
 
 The **AI Ticketing System** is a full‑stack application that allows users to create support tickets which are enriched by an AI service. It features real‑time updates, file upload integration via the Gemini API, and JWT‑based authentication for secure access. The application is built with an Express/MongoDB backend and a modern Next.js frontend styled with Tailwind CSS.
+![Image](https://github.com/user-attachments/assets/00d0f06e-1a59-4095-a480-a39c9d2a9ccc)
 
+![Image](https://github.com/user-attachments/assets/55652b8f-d5d2-45aa-8d82-dae746e93b8c)
 ## Features
 
 - **Ticket Creation & AI Enrichment:**  
