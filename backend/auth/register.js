@@ -1,5 +1,5 @@
 
-import User from "../../../models/User.js";
+import User from "../models/userModel.js"
 import bcrypt from "bcrypt";
 import { connectDB } from "../config/db.js";
 
@@ -23,3 +23,4 @@ export default async function handler(req, res) {
   const user = await User.create({ email, password: hashedPassword, name });
   res.status(201).json({ message: "User created successfully", userId: user._id });
 }
+

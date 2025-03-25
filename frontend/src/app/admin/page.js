@@ -249,7 +249,7 @@ export default function AdminDashboard() {
               <p className="text-gray-400 text-sm mb-2">Enriched Tickets</p>
               <p className="text-2xl font-bold">{stats.enriched}</p>
             </div>
-            <div className="bg-[#1F2244] p-4 rounded-lg shadow">
+            <div className="bg-[#1F2244] p-4 rounded-lg shadow">  
               <p className="text-gray-400 text-sm mb-2">Open / Processing</p>
               <p className="text-2xl font-bold">{stats.open}</p>
             </div>

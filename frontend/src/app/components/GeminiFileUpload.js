@@ -20,7 +20,6 @@ export default function GeminiFileUpload({ onUploadSuccess, onUploadError }) {
     }
     setUploading(true);
     const formData = new FormData();
-    // Adjust the key "file" if your Gemini API expects a different field name.
     formData.append("file", selectedFile);
 
     try {

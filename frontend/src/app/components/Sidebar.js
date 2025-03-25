@@ -102,7 +102,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           </svg>
           {!collapsed && <span>Analytics</span>}
         </Link>
-        <Link href="/profile"
+        <Link href="/login"
           onClick={handleLinkClick}
           className="flex items-center p-2 rounded hover:bg-[#222752]">
           <svg

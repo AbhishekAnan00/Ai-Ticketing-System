@@ -8,8 +8,7 @@ import { connectDB } from "./config/db.js";
 import ticketRoute from "./routes/ticketRoute.js"
 import userRoute from "./routes/userRoute.js";;
 import { socketHandler } from "./sockets/SocketHandler.js"; 
-
-dotenv.config();
+import authRoutes from "./auth/login.js"
 
 const app = express();
 
@@ -17,18 +16,21 @@ app.use(cors());
 app.use(express.json());
 
 // Ensure uploads directory exists
-// const uploadsDir = path.join(process.cwd(), "uploads");
-// if (!fs.existsSync(uploadsDir)) {
-//   fs.mkdirSync(uploadsDir);
-//   console.log("Created uploads directory at:", uploadsDir);
-// } else {
-//   console.log("Uploads directory already exists at:", uploadsDir);
-// }
+const uploadsDir = path.join(process.cwd(), "uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+  console.log("Created uploads directory at:", uploadsDir);
+} else {
+  console.log("Uploads directory already exists at:", uploadsDir);
+}
 
-//app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 connectDB();
 
+
+
+app.use("/", authRoutes);
 app.use("/api/tickets", ticketRoute);
 app.use("/api/users", userRoute);
 
